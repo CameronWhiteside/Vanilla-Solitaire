@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Practice
+    </title>
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+            document.body.addEventListener('dragstart', handleDragStart)
+            document.body.addEventListener('drop', handleDrop)
+            document.body.addEventListener('dragover', handleOver)
+
+            // document.body.addEventListener('mousedown', handleCursorGrab)
+            // document.body.addEventListener('dragenter', handleEnter);
+            // document.body.addEventListener('dragleave', handleLeave)
+            });
+
+
+
+            function handleDragStart(e) {
+
+            console.log('DRAGSTART')
+            e.dataTransfer.setData('text/plain', e.target.id)
+
+            }
+
+        function handleDrop(e) {
+            // console.log('DROP', e.target)
+            let droppedItemId = e.dataTransfer.getData('text/plain')
+            console.log({droppedItemId})
+            let dropzone = e.target;
+            // console.log(dropzone)
+            e.preventDefault()
+            dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id= 10C' draggable="true"></div>`
+            dropzone.classList.remove('over')
+            }
+
+     function handleOver(e) {
+            let dropzone = e.target;
+            e.preventDefault();
+            dropzone.classList.add('over');
+            }
+
+
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="maingrid">
+        <div class= "cardslot" id="downpile">downpile</div>
+        <div class= "cardslot" id="uppile">
+            <div class ="card" id= '10C' draggable="true"></div>
+        </div>
+        <div class= "cardslot" id="clubcollector">clubcollector</div>
+        <div class= "cardslot" id="diamondcollector">diamondcollector</div>
+        <div class= "cardslot" id="spadecollector">spadecollector</div>
+        <div class= "cardslot" id="heartcollector">heartcollector</div>
+        <div class= "cardslot" id="pile1">pile1</div>
+        <div class= "cardslot" id="pile2">pile2</div>
+        <div class= "cardslot" id="pile3">pile3</div>
+        <div class= "cardslot" id="pile4">pile4</div>
+        <div class= "cardslot" id="pile5">pile5</div>
+        <div class= "cardslot" id="pile6">pile6</div>
+        <div class= "cardslot" id="pile7">pile7</div>
+    </div>
+
+</body>
+</html>

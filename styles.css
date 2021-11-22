@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #202124;
+}
+
+.maingrid {
+    margin: 30px;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 250px 1fr;
+    grid-template-areas:
+    "downpile uppile . clubcollector diamondcollector spadecollector heartcollector"
+    "pile1 pile2 pile3 pile4 pile5 pile6 pile7"
+}
+
+.cardslot{
+   width: 135px;
+   height: 189px;
+   background-color: #19191b;
+   margin: 10px;
+   border-radius: 6px;
+   box-shadow: inset 5px -5px 6px #0f0f11;
+   position: relative;
+}
+
+
+/* .over{
+   background-color: #252529;
+} */
+
+#downpile {
+    grid-area: downpile;
+}
+
+#uppile {
+    grid-area: uppile;
+}
+
+#clubcollector {
+    grid-area: clubcollector;
+}
+
+#diamondcollector{
+    grid-area: diamondcollector;
+}
+
+#spadecollector{
+    grid-area: spadecollector;
+}
+
+#heartcollector{
+    grid-area: heartcollector;
+}
+
+#pile1{
+    grid-area: pile1;
+}
+
+#pile2{
+    grid-area: pile2;
+}
+
+#pile3{
+    grid-area: pile3;
+}
+
+#pile4{
+    grid-area: pile4;
+}
+
+#pile5{
+    grid-area: pile5;
+}
+
+#pile6{
+    grid-area: pile6;
+}
+
+#pile7{
+    grid-area: pile7;
+}
+
+.card{
+    background-image: url(./assets/10C.svg);
+    background-size: contain;
+    width: 135px;
+    height: 189px;
+    position: relative;
+    z-index: 100;
+}

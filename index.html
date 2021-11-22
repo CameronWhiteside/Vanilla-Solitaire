@@ -24,22 +24,23 @@
 
             console.log('DRAGSTART')
             e.dataTransfer.setData('text/plain', e.target.id)
+            
 
             }
 
         function handleDrop(e) {
-            // console.log('DROP', e.target)
-            let droppedItemId = e.dataTransfer.getData('text/plain')
-            console.log({droppedItemId})
             let dropzone = e.target;
-            // console.log(dropzone)
+            if(!dropzone.classList.contains('cardslot')) return;
             e.preventDefault()
-            dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id= 10C' draggable="true"></div>`
+
+            let droppedItemId = e.dataTransfer.getData('text/plain')
+            dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id=${droppedItemId} draggable="true"></div>`
             dropzone.classList.remove('over')
             }
 
      function handleOver(e) {
             let dropzone = e.target;
+            if(!dropzone.classList.contains('cardslot')) return;
             e.preventDefault();
             dropzone.classList.add('over');
             }

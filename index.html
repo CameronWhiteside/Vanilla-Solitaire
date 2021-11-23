@@ -6,47 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solitaire Practice
     </title>
-    <script>
-            document.addEventListener('DOMContentLoaded', () => {
-
-            document.body.addEventListener('dragstart', handleDragStart)
-            document.body.addEventListener('drop', handleDrop)
-            document.body.addEventListener('dragover', handleOver)
-
-            // document.body.addEventListener('mousedown', handleCursorGrab)
-            // document.body.addEventListener('dragenter', handleEnter);
-            // document.body.addEventListener('dragleave', handleLeave)
-            });
-
-
-
-            function handleDragStart(e) {
-
-            console.log('DRAGSTART')
-            e.dataTransfer.setData('text/plain', e.target.id)
-            
-
-            }
-
-        function handleDrop(e) {
-            let dropzone = e.target;
-            if(!dropzone.classList.contains('cardslot')) return;
-            e.preventDefault()
-
-            let droppedItemId = e.dataTransfer.getData('text/plain')
-            dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id=${droppedItemId} draggable="true"></div>`
-            dropzone.classList.remove('over')
-            }
-
-     function handleOver(e) {
-            let dropzone = e.target;
-            if(!dropzone.classList.contains('cardslot')) return;
-            e.preventDefault();
-            dropzone.classList.add('over');
-            }
-
-
-    </script>
+    <script src='index.js'></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>

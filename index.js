@@ -1,38 +1,38 @@
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-//     document.body.addEventListener('dragstart', handleDragStart)
-//     document.body.addEventListener('drop', handleDrop)
-//     document.body.addEventListener('dragover', handleOver)
+    document.body.addEventListener('dragstart', handleDragStart)
+    document.body.addEventListener('drop', handleDrop)
+    document.body.addEventListener('dragover', handleOver)
 
-//     // document.body.addEventListener('mousedown', handleCursorGrab)
-//     // document.body.addEventListener('dragenter', handleEnter);
-//     // document.body.addEventListener('dragleave', handleLeave)
-// });
+    // document.body.addEventListener('mousedown', handleCursorGrab)
+    // document.body.addEventListener('dragenter', handleEnter);
+    // document.body.addEventListener('dragleave', handleLeave)
+    });
 
-// let obj
 
-// function handleDragStart(e) {
-//     obj = e.target
-//     if (!obj.closest('.card')) return;
-//     if (obj.classList.contains('card')) {
-//         obj = obj.firstElementChild;
-//     }
 
-//     console.log('DRAGSTART')
-//     e.dataTransfer.setData('text/plain', 'SOME DATA')
-// }
+    function handleDragStart(e) {
 
-// function handleDrop(e) {
-//     console.log('DROP')
-//     let dropzone = e.target;
-//     e.preventDefault()
-//     dropzone.appendChild(obj)
-//     dropzone.classList.remove('over')
-// }
+    console.log('DRAGSTART')
+    e.dataTransfer.setData('text/plain', e.target.id)
+    e.target.remove()
 
-// function handleOver(e) {
-//     let dropzone = e.target;
-//     if (!dropzone.classList.contains('cardslot')) return;
-//     e.preventDefault();
-//     dropzone.classList.add('over');
-// }
+    }
+
+function handleDrop(e) {
+    let dropzone = e.target;
+    if(!dropzone.classList.contains('cardslot')) return;
+    e.preventDefault()
+
+    let droppedItemId = e.dataTransfer.getData('text/plain')
+    dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id=${droppedItemId} draggable="true"></div>`
+    dropzone.classList.remove('over')
+    }
+
+function handleOver(e) {
+    let dropzone = e.target;
+    if(!dropzone.classList.contains('cardslot')) return;
+    e.preventDefault();
+    dropzone.classList.add('over');
+    }
+

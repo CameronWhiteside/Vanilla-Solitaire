@@ -7,21 +7,21 @@
     <title>Solitaire Practice
     </title>
     <script src='index.js'></script>
+    <script src = 'cardGenerator.js'></script>
     <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <div class="maingrid">
         <div class= "cardslot" id="downpile">
-            <div class ="card facedown" draggable="false"> </div>
+            <!-- <div class ="card facedown" data-value="" data-suit="" data-color="" data-id="" data-faceup="" draggable="false"> </div> -->
         </div>
         <div class= "cardslot" id="uppile">
-            <div class="card" id='C10' draggable="true"></div>
-            <div class="card" id='D10' draggable="true"></div>
+            <div class ="card facedown" data-value="" data-suit="" data-color="" data-id="" data-faceup="" draggable="true"></div>
         </div>
         <div class= "cardslot collector" id="clubcollector"></div>
-        <div class= "cardslot collector" id="diamondcollector">diamondcollector</div>
-        <div class= "cardslot collector" id="spadecollector">spadecollector</div>
-        <div class= "cardslot collector" id="heartcollector">heartcollector</div>
+        <div class= "cardslot collector" id="diamondcollector"></div>
+        <div class= "cardslot collector" id="spadecollector"></div>
+        <div class= "cardslot collector" id="heartcollector"></div>
         <div class= "cardslot pile" id="pile1">pile1</div>
         <div class= "cardslot pile" id="pile2">pile2</div>
         <div class= "cardslot pile" id="pile3">pile3</div>

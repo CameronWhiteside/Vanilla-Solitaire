@@ -1,4 +1,4 @@
-const { create } = require("domain");
+window.addEventListener('DOMContentLoaded', (e) =>{
 
 class Card{
     constructor(value, suit){
@@ -9,17 +9,14 @@ class Card{
             else return 'black'
         })()
 
-        this.id = `${suit}${value}`;
+        this.id = `${value}${suit}`;
         this.faceup = 'false';
     }
 }
 
-let suitOptions = ['C','D','S','H'];
-let valueOptions = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-
-
-
 const createDeck = () => {
+    let suitOptions = ['C','D','S','H'];
+    let valueOptions = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'];
     let allCards = []
     suitOptions.forEach(suit => {
         valueOptions.forEach(value => {
@@ -40,4 +37,28 @@ const shuffleDeck = (startDeck) => {
     return resultDeck
 }
 
+const drawCard = (deck) => {
+    let cardElement = document.createElement('div');
+    let cardObject = deck.pop();
+    console.log(cardObject);
+    for (let property in cardObject[0]) {
+        cardElement.dataset[property] = cardObject[0][property]
+    }
+    console.log(cardElement)
+    cardElement.draggable = true;
+    cardElement.classList.add('card');
+    cardElement.style.backgroundImage = `url(./assets/card-backs/${cardObject[0].id}.svg)`
+    let pileToAdd = document.querySelector('#pile1')
+    pileToAdd.appendChild(cardElement);
+
+}
+
+let shuffledDeck = shuffleDeck(unshuffledDeck);
 console.log(shuffleDeck(unshuffledDeck).length);
+
+let drawPile = document.getElementById('downpile')
+    drawPile.addEventListener('click', () => {
+        drawCard(shuffledDeck);
+    })
+
+})

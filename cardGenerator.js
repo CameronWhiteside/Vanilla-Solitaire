@@ -17,16 +17,27 @@ class Card{
 let suitOptions = ['C','D','S','H'];
 let valueOptions = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-let allCards = []
+
 
 const createDeck = () => {
+    let allCards = []
     suitOptions.forEach(suit => {
         valueOptions.forEach(value => {
             let newCard = new Card(value, suit)
             allCards.push(newCard)
         })
     })
-    console.log(allCards)
+    return allCards
 }
 
-createDeck()
+const unshuffledDeck = createDeck()
+const shuffleDeck = (startDeck) => {
+    let resultDeck =[]
+    while (startDeck.length > 0) {
+        let randomIndex = Math.floor(Math.random() * startDeck.length)
+        resultDeck.push(startDeck.splice(randomIndex, 1))
+    }
+    return resultDeck
+}
+
+console.log(shuffleDeck(unshuffledDeck).length);

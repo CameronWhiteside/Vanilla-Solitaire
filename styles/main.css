@@ -1,0 +1,184 @@
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-y: scroll;
+  background: var(--greyLight-1);
+}
+
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.maingrid {
+  margin: 30px;
+  max-width: 1300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  -ms-grid-rows: 250px 1fr;
+      grid-template-rows: 250px 1fr;
+      grid-template-areas: "downpile uppile . clubcollector diamondcollector spadecollector heartcollector" "pile1 pile2 pile3 pile4 pile5 pile6 pile7";
+}
+
+.cardslot {
+  width: 135px;
+  height: 189px;
+  margin: 10px;
+  border-radius: 6px;
+  position: relative;
+  -webkit-box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+          box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+#downpile {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: downpile;
+}
+
+#uppile {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: uppile;
+}
+
+.collector {
+  background-repeat: no-repeat;
+}
+
+#clubcollector {
+  background-image: url(../assets/big-club-shadow.png);
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: clubcollector;
+  background-size: 80%;
+  background-position-x: 13px;
+  background-position-y: 30px;
+}
+
+#diamondcollector {
+  background-image: url(../assets/big-diamond-shadow.png);
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: diamondcollector;
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position-x: 23px;
+  background-position-y: 30px;
+}
+
+#spadecollector {
+  background-image: url(../assets/big-spade-shadow.png);
+  -ms-grid-row: 1;
+  -ms-grid-column: 6;
+  grid-area: spadecollector;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position-x: 20px;
+  background-position-y: 30px;
+}
+
+#heartcollector {
+  background-image: url(../assets/big-heart-shadow.png);
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+  grid-area: heartcollector;
+  background-size: 80%;
+  background-position-x: 14px;
+  background-position-y: 35px;
+}
+
+#pile1 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: pile1;
+}
+
+#pile2 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: pile2;
+}
+
+#pile3 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: pile3;
+}
+
+#pile4 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: pile4;
+}
+
+#pile5 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 5;
+  grid-area: pile5;
+}
+
+#pile6 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 6;
+  grid-area: pile6;
+}
+
+#pile7 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 7;
+  grid-area: pile7;
+}
+
+.card {
+  background-size: contain;
+  width: 135px;
+  height: 189px;
+  position: relative;
+  z-index: 100;
+  margin-bottom: -189px;
+  margin-right: -10px;
+}
+
+.pile > .card {
+  margin: 0px 0px -150px;
+}
+
+.facedown {
+  background-image: url(../assets/lite-card-back.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+          box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+#C10 {
+  background-image: url(../assets/10C.svg);
+}
+
+#D10 {
+  background-image: url(../assets/10D.svg);
+}
+/*# sourceMappingURL=main.css.map */

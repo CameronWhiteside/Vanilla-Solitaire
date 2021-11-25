@@ -158,8 +158,9 @@ html {
   height: 189px;
   position: relative;
   z-index: 100;
-  margin-bottom: -189px;
+  margin-bottom: -190px;
   margin-right: -10px;
+  opacity: 50%;
 }
 
 .pile > .card {

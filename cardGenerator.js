@@ -47,9 +47,15 @@ class Card{
 
 let shuffledDeck = shuffleDeck(unshuffledDeck);
 
-//selects the top card in a given deck
+const flipUpInPlace = card => {
+    card.dataset.faceup = 'true'
+    card.style.backgroundImage = `url(./assets/card-fronts/${card.id}.svg)`
+    card.draggable = 'true'
+}
 
-const dealCard = (deck, pileID, facing = 'down') => {
+
+//selects the top card in a given deck
+const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
     //create a new div
     let cardElement = document.createElement('div');
 
@@ -67,6 +73,14 @@ const dealCard = (deck, pileID, facing = 'down') => {
         //set downturned card behavior
         cardElement.style.backgroundImage = `url(./assets/lite-card-back.svg)`
         cardElement.draggable = 'false'
+        //allows for card to be turned pver
+        if (flipInPlace) {
+            cardElement.addEventListener('click', (e) => {
+                e.stopPropagation()
+                flipUpInPlace(cardElement)
+
+            })
+        }
     };
 
     // assign all card attrubutes
@@ -74,12 +88,14 @@ const dealCard = (deck, pileID, facing = 'down') => {
         cardElement.dataset[property] = cardObject[property]
     }
 
-    cardElement.classList.add('card');
+    cardElement.classList.add('card','cardslot');
+
 
 
     //add to specified pile
     let pileToAdd = document.getElementById(pileID)
     pileToAdd.appendChild(cardElement);
+    return cardElement.id
 
 }
 
@@ -87,17 +103,82 @@ const dealCard = (deck, pileID, facing = 'down') => {
 let drawPile = document.getElementById('downpile')
 
 
-drawPile.addEventListener('click', () => {
-        dealCard(shuffledDeck, 'uppile', 'up');
-})
+    drawPile.addEventListener('click', (e) => {
+        let topCard = e.target;
+        while (topCard.innerHTML) {
+            newTop = topCard
+            topCard = topCard.innerHTML
+        }
+
+        let uppile = document.querySelector('#uppile')
+
+        while (uppile.children[0]) {
+            uppile = uppile.children[0]
+        }
+
+        topCard.dataset.faceup = 'true'
+        topCard.style.backgroundImage = `url(./assets/card-fronts/${topCard.id}.svg)`
+        uppile.appendChild(topCard);
+
+    })
 
 
-    document.querySelectorAll('.pile').forEach(pile => {
-        let dealCount = parseInt(pile.id[pile.id.length - 1])
-        for (let i = 1; i < dealCount; i++) {
-            dealCard(shuffledDeck, pile.id, 'up')
+    document.getElementById('newgame').addEventListener('click', () => {
+        //add basecards to each pile
+        document.querySelectorAll('.pile').forEach(pile => {
+            let dealCount = parseInt(pile.id[pile.id.length - 1])
+            let startingPile = pile.id
+            for (let i = 0; i < dealCount-1; i++) {
+                startingPile = dealCard(shuffledDeck, startingPile, 'down', true)
+            }
+            dealCard(shuffledDeck, startingPile, 'up')
+        })
+
+        let startingPile = 'downpile'
+        while (shuffledDeck.length > 0) {
+            startingPile = dealCard(shuffledDeck, startingPile, 'down');
         }
     }
-)
+
+    )
+
+    const reverseCardStack = () => {
+        //check to see if there are no more children (i.e. you've reached the new top)
+        let newList = '';
+        let parentNode = document.getElementById('uppile').children[0]
+        //while you haven't reached the new top
+        while (parentNode) {
+            parentNode.dataset.faceup = false;
+            parentNode.style.backgroundImage = `url(./assets/lite-card-back.svg)`
+            //prepare the next level
+            nextCard = parentNode.children[0];
+            //take the current level and nest the reversed stack
+            parentNode.innerHTML = '';
+            if (newList) {
+                parentNode.appendChild(newList)
+            }
+            //redefine the reversed stack
+            newList = parentNode;
+            //redefine the parent node
+            parentNode = nextCard;
+
+        }
+
+
+
+        return newList;
+
+    }
+
+
+    document.getElementById('uppile').addEventListener('click', () => {
+       console.log(document.getElementById('downpile').children.length)
+            if (document.getElementById('downpile').children.length === 0) {
+                let freshDeck = reverseCardStack()
+                document.getElementById('downpile').innerHTML = '';
+                document.getElementById('downpile').appendChild(freshDeck);
+            }
+
+    })
 
 })

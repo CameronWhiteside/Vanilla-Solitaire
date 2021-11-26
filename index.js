@@ -32,6 +32,7 @@ function handleDrop(e) {
     let droppedItemInfo = e.dataTransfer.getData('droppedItemInfo')
     let droppedItemId = e.dataTransfer.getData('droppedItemId')
     let droppedInnerHTML = e.dataTransfer.getData('innerHTML')
+    
     console.log({ droppedItemId });
     console.log(droppedItemInfo);
     document.getElementById(droppedItemId).remove()

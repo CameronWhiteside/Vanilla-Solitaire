@@ -98,11 +98,25 @@ h1 {
 
 #downpile {
     grid-area: downpile;
+    position: relative;
 }
 
 #uppile {
     grid-area: uppile;
 }
+
+#downpile *,
+#uppile *,
+#spadecollector *,
+#clubcollector *,
+#heartcollector *,
+#diamondcollector *{
+    position: absolute;
+    top: -0.5px;
+    box-shadow: none;
+}
+
+
 
 .card{
     background-size: contain;
@@ -110,12 +124,9 @@ h1 {
     height: 189px;
     position: relative;
     z-index: 100;
-    opacity: 95%;
+    opacity: 99%;
 }
 
-#uppile > .card{
-    margin-bottom:-190px;
-}
 
 .facedown{
     background-image: url(../assets/lite-card-back.svg);

@@ -23,7 +23,7 @@ html {
     overflow-y: scroll;
     background: var(--greyLight-1);
     font-family: craw-modern-urw,serif;
-    font-weight: 700;
+    font-weight: 300;
     font-style: normal;
 
     @media screen and (min-width: 900px) {
@@ -39,36 +39,40 @@ html {
 
 header{
     margin: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     max-width: 1300px;
     display: flex;
     justify-content: space-between;
 }
 
-.leftheader{
+.rightheader{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
 h1 {
     font-size: 50px;
-    color:var(--greyDark)
+    color:var(--greyDark);
     // -webkit-background-clip: text;
     // -webkit-text-fill-color: transparent;
+    padding: 20px;
+    border-radius: 900px;
   }
 
-#newgame{
+.headerbutton{
     background-color: transparent;
     border: none;
     font-family: craw-modern-urw,serif;
     box-shadow: $shadow;
-    padding: 5px 15px;
-    margin: 5px 100px;
+    padding: 10px 20px;
+    margin: 5px 20px 1px;
     border-radius: 100px;
     font-size: 18px;
-    color:var(--greyDark)
+    color:var(--greyDark);
+    transition: box-shadow 2s;
 }
+
 
 
 .maingrid {
@@ -116,7 +120,9 @@ h1 {
     box-shadow: none;
 }
 
-
+.pile [data-faceup='false'] > *{
+    top: 15px;
+}
 
 .card{
     background-size: contain;
@@ -124,27 +130,18 @@ h1 {
     height: 189px;
     position: relative;
     z-index: 100;
-    opacity: 99%;
+    opacity: 99.5%;
 }
 
 
-.facedown{
-    background-image: url(../assets/lite-card-back.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    box-shadow: $shadow;
-}
+
 
 // COLLECTOR STYLING
-
-
-.collector{
-    background-repeat: no-repeat;
-}
 
 #clubcollector {
     background-image: url(../assets/big-club-shadow.png);
     grid-area: clubcollector;
+    background-repeat: no-repeat;
     background-size: 80%;
     background-position-x: 13px;
     background-position-y: 30px;
@@ -171,8 +168,8 @@ h1 {
 #heartcollector{
     background-image: url(../assets/big-heart-shadow.png);
     grid-area: heartcollector;
+    background-repeat: no-repeat;
     background-size: 80%;
-
     background-position-x: 14px;
     background-position-y: 35px;
 }

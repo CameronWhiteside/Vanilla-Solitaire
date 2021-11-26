@@ -16,7 +16,7 @@ html {
   overflow-y: scroll;
   background: var(--greyLight-1);
   font-family: craw-modern-urw,serif;
-  font-weight: 700;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -35,7 +35,7 @@ html {
 
 header {
   margin: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   max-width: 1300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -45,14 +45,14 @@ header {
           justify-content: space-between;
 }
 
-.leftheader {
+.rightheader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -61,19 +61,25 @@ header {
 h1 {
   font-size: 50px;
   color: var(--greyDark);
+  padding: 20px;
+  border-radius: 900px;
 }
 
-#newgame {
+.headerbutton {
   background-color: transparent;
   border: none;
   font-family: craw-modern-urw,serif;
   -webkit-box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
           box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-  padding: 5px 15px;
-  margin: 5px 100px;
+  padding: 10px 20px;
+  margin: 5px 20px 1px;
   border-radius: 100px;
   font-size: 18px;
   color: var(--greyDark);
+  -webkit-transition: -webkit-box-shadow 2s;
+  transition: -webkit-box-shadow 2s;
+  transition: box-shadow 2s;
+  transition: box-shadow 2s, -webkit-box-shadow 2s;
 }
 
 .maingrid {
@@ -127,25 +133,17 @@ h1 {
           box-shadow: none;
 }
 
+.pile [data-faceup='false'] > * {
+  top: 15px;
+}
+
 .card {
   background-size: contain;
   width: 135px;
   height: 189px;
   position: relative;
   z-index: 100;
-  opacity: 99%;
-}
-
-.facedown {
-  background-image: url(../assets/lite-card-back.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  -webkit-box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-          box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-}
-
-.collector {
-  background-repeat: no-repeat;
+  opacity: 99.5%;
 }
 
 #clubcollector {
@@ -153,6 +151,7 @@ h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 4;
   grid-area: clubcollector;
+  background-repeat: no-repeat;
   background-size: 80%;
   background-position-x: 13px;
   background-position-y: 30px;
@@ -185,6 +184,7 @@ h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 7;
   grid-area: heartcollector;
+  background-repeat: no-repeat;
   background-size: 80%;
   background-position-x: 14px;
   background-position-y: 35px;

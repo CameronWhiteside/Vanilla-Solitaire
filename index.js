@@ -14,27 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function handleDragStart(e) {
-
-    console.log('DRAGSTART')
         e.dataTransfer.setData('droppedItemInfo', JSON.stringify(e.target.dataset))
         e.dataTransfer.setData('droppedItemId', e.target.id)
         e.dataTransfer.setData('innerHTML', e.target.innerHTML);
-        console.log(e.dataTransfer.getData('innerHTML'))
-    // e.target.remove()
-
     }
 
 function handleDrop(e) {
     let dropzone = e.target;
-    if(!dropzone.classList.contains('cardslot')) return;
+    console.log(dropzone.id)
+    console.log(e.dataTransfer.getData('droppedItemId'))
+    if(!dropzone.classList.contains('cardslot') || (dropzone.children.length > 0) || dropzone.id === e.dataTransfer.getData('droppedItemId')) return;
     e.preventDefault()
 
     let droppedItemInfo = e.dataTransfer.getData('droppedItemInfo')
     let droppedItemId = e.dataTransfer.getData('droppedItemId')
     let droppedInnerHTML = e.dataTransfer.getData('innerHTML')
-    
-    console.log({ droppedItemId });
-    console.log(droppedItemInfo);
+
     document.getElementById(droppedItemId).remove()
     let newCard = document.createElement('div')
     let newCardData = JSON.parse(droppedItemInfo)
@@ -48,7 +43,6 @@ function handleDrop(e) {
     newCard.style.backgroundImage = `url(./assets/card-fronts/${newCard.id}.svg)`
 
     // document.getElementById(droppedItemId).remove()
-    console.log(newCard);
     dropzone.appendChild(newCard)
     dropzone.classList.remove('over')
     }

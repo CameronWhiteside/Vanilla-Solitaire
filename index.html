@@ -4,31 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solitaire Practice
+    <title>Solitaire
     </title>
     <script src='index.js'></script>
     <script src = 'cardGenerator.js'></script>
+    <link rel="stylesheet" href="https://use.typekit.net/bqt8jpt.css">
     <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+<header>
+    <div class="leftheader">
+        <h1 id='pagetitle'>solitaire</h1>
+        <button id='newgame'>new game</button>
+    </div>
+    <div class="rightheader">
+        <div>about</div>
+    </div>
+</header>
+
     <div class="maingrid">
         <div class= "cardslot" id="downpile">
-            <!-- <div class ="card facedown" data-value="" data-suit="" data-color="" data-id="" data-faceup="" draggable="false"> </div> -->
-        </div>
-        <div class= "cardslot" id="uppile">
             <div class ="card facedown" data-value="" data-suit="" data-color="" data-id="" data-faceup="" draggable="true"></div>
+        </div>
+        <div class= "cardslot collector" id="uppile">
         </div>
         <div class= "cardslot collector" id="clubcollector"></div>
         <div class= "cardslot collector" id="diamondcollector"></div>
         <div class= "cardslot collector" id="spadecollector"></div>
         <div class= "cardslot collector" id="heartcollector"></div>
-        <div class= "cardslot pile" id="pile1">pile1</div>
-        <div class= "cardslot pile" id="pile2">pile2</div>
-        <div class= "cardslot pile" id="pile3">pile3</div>
-        <div class= "cardslot pile" id="pile4">pile4</div>
-        <div class= "cardslot pile" id="pile5">pile5</div>
-        <div class= "cardslot pile" id="pile6">pile6</div>
-        <div class= "cardslot pile" id="pile7">pile7</div>
+        <div class= "cardslot pile" id="pile1"></div>
+        <div class= "cardslot pile" id="pile2"></div>
+        <div class= "cardslot pile" id="pile3"></div>
+        <div class= "cardslot pile" id="pile4"></div>
+        <div class= "cardslot pile" id="pile5"></div>
+        <div class= "cardslot pile" id="pile6"></div>
+        <div class= "cardslot pile" id="pile7"></div>
     </div>
 
 </body>

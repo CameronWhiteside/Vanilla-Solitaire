@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleDragStart(e) {
 
     console.log('DRAGSTART')
-    e.dataTransfer.setData('draggedID', e.target.id)
+        e.dataTransfer.setData('droppedItemInfo', JSON.stringify(e.target.dataset))
+        e.dataTransfer.setData('droppedItemId', e.target.id)
+        e.dataTransfer.setData('innerHTML', e.target.innerHTML);
+        console.log(e.dataTransfer.getData('innerHTML'))
     // e.target.remove()
 
     }
@@ -26,9 +29,26 @@ function handleDrop(e) {
     if(!dropzone.classList.contains('cardslot')) return;
     e.preventDefault()
 
-    let droppedItemId = e.dataTransfer.getData('draggedID')
+    let droppedItemInfo = e.dataTransfer.getData('droppedItemInfo')
+    let droppedItemId = e.dataTransfer.getData('droppedItemId')
+    let droppedInnerHTML = e.dataTransfer.getData('innerHTML')
+    console.log({ droppedItemId });
+    console.log(droppedItemInfo);
     document.getElementById(droppedItemId).remove()
-    dropzone.innerHTML = dropzone.innerHTML += `<div class ="card" id=${droppedItemId} draggable="true"></div>`
+    let newCard = document.createElement('div')
+    let newCardData = JSON.parse(droppedItemInfo)
+    newCard.id = newCardData.id;
+    newCard.classList.add('card','cardslot')
+    newCard.draggable = true;
+    newCard.innerHTML = droppedInnerHTML;
+    for (let property in newCardData) {
+        newCard.dataset[property] = newCardData[property]
+    }
+    newCard.style.backgroundImage = `url(./assets/card-fronts/${newCard.id}.svg)`
+
+    // document.getElementById(droppedItemId).remove()
+    console.log(newCard);
+    dropzone.appendChild(newCard)
     dropzone.classList.remove('over')
     }
 

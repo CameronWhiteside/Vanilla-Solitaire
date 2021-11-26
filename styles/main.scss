@@ -22,6 +22,9 @@ html {
     font-size: 62.5%; // 1rem = 10px    100% = 16px
     overflow-y: scroll;
     background: var(--greyLight-1);
+    font-family: craw-modern-urw,serif;
+    font-weight: 700;
+    font-style: normal;
 
     @media screen and (min-width: 900px) {
           font-size: 75%; }
@@ -32,6 +35,39 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+header{
+    margin: 30px;
+    margin-bottom: 60px;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftheader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+    color:var(--greyDark)
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+  }
+
+#newgame{
+    background-color: transparent;
+    border: none;
+    font-family: craw-modern-urw,serif;
+    box-shadow: $shadow;
+    padding: 5px 15px;
+    margin: 5px 100px;
+    border-radius: 100px;
+    font-size: 18px;
+    color:var(--greyDark)
 }
 
 
@@ -49,10 +85,14 @@ html {
 .cardslot{
    width: 135px;
    height: 189px;
-   margin: 10px;
    border-radius: 6px;
    position: relative;
    box-shadow:$inner-shadow
+}
+
+.card .cardslot{
+    position: absolute;
+    top: 35px;
 }
 
 
@@ -63,6 +103,29 @@ html {
 #uppile {
     grid-area: uppile;
 }
+
+.card{
+    background-size: contain;
+    width: 135px;
+    height: 189px;
+    position: relative;
+    z-index: 100;
+    opacity: 95%;
+}
+
+#uppile > .card{
+    margin-bottom:-190px;
+}
+
+.facedown{
+    background-image: url(../assets/lite-card-back.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: $shadow;
+}
+
+// COLLECTOR STYLING
+
 
 .collector{
     background-repeat: no-repeat;
@@ -103,6 +166,8 @@ html {
     background-position-y: 35px;
 }
 
+//GRID LAYOUT
+
 #pile1{
     grid-area: pile1;
 }
@@ -129,35 +194,4 @@ html {
 
 #pile7{
     grid-area: pile7;
-}
-
-.card{
-    background-size: contain;
-    width: 135px;
-    height: 189px;
-    position: relative;
-    z-index: 100;
-    margin-bottom: -190px;
-    margin-right: -10px;
-    opacity: 50%;
-}
-
-.pile > .card{
-    margin: 0px 0px -150px;
-}
-
-.facedown{
-    background-image: url(../assets/lite-card-back.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    box-shadow: $shadow;
-}
-
-
-#C10{
-    background-image: url(../assets/10C.svg);
-}
-
-#D10{
-    background-image: url(../assets/10D.svg);
 }

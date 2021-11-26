@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', (e) => {
 
-
-
+//specifies playing card standards
 let suitOptions = ['C', 'D', 'S', 'H'];
 let valueOptions = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'];
 
@@ -47,6 +46,7 @@ let shuffleDeck = (startDeck) => {
 };
 
 
+//defines behavior for clicking on the bottom-most facedown card on piles
 const flipUpInPlace = card => {
     if (card.children.length === 0 || card.children[0].dataset.faceup === true) {
         card.dataset.faceup = true
@@ -56,7 +56,8 @@ const flipUpInPlace = card => {
 }
 
 
-//selects the top card in a given deck
+//creates a new div based on the last element in the shuffled deck, and appends it to a specified pile's linked-list
+
 const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
     //create a new div
     let cardElement = document.createElement('div');
@@ -67,7 +68,7 @@ const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
     let cardObject = deck.pop()[0];
     cardElement.id = cardObject.id;
 
-    //assign the background image
+    //assign the appropriate background image and html attributes
     if (facing === 'up') {
         //set upturned card behavior
         cardElement.style.backgroundImage = `url(./assets/card-fronts/${cardObject.id}.svg)`
@@ -78,7 +79,8 @@ const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
         cardElement.faceup = false
         cardElement.style.backgroundImage = `url(./assets/lite-card-back.svg)`
         cardElement.draggable = false
-        //allows for card to be turned pver
+
+        //allows for card to be turned over when all covering cards have been removed
         if (flipInPlace) {
             cardElement.addEventListener('click', (e) => {
                 e.stopPropagation()
@@ -88,16 +90,18 @@ const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
         }
     };
 
-    // assign all card attrubutes
+    // assign all card data attributes based on object key/value pairs
     for (let property in cardObject) {
         cardElement.dataset[property] = cardObject[property]
     }
 
+
+    //adds necessary classes for styling and drag drop functionality
     cardElement.classList.add('card','cardslot');
 
 
 
-    //add to specified pile
+    //appends the thing
     let pileToAdd = document.getElementById(pileID)
     pileToAdd.appendChild(cardElement);
     return cardElement.id
@@ -105,12 +109,9 @@ const dealCard = (deck, pileID, facing = 'down', flipInPlace = false) => {
 }
 
 
-let unshuffledDeck = createDeck();
-let shuffledDeck = shuffleDeck(unshuffledDeck);
-let drawPile = document.getElementById('downpile')
+//defines behavior to flip over a card from the downpile to the uppile
 
-
-drawPile.addEventListener('click', (e) => {
+document.getElementById('downpile').addEventListener('click', (e) => {
     let topCard = e.target;
 
     while (topCard.innerHTML) {
@@ -123,25 +124,21 @@ drawPile.addEventListener('click', (e) => {
     let uppile = document.querySelector('#uppile')
 
     while (uppile.children[0]) {
-            uppile = uppile.children[0]
-     }
+        uppile = uppile.children[0]
+    }
 
-        topCard.draggable = true
-        topCard.dataset.faceup = true
-        topCard.style.backgroundImage = `url(./assets/card-fronts/${topCard.id}.svg)`
-        uppile.appendChild(topCard);
+    topCard.draggable = true
+    topCard.dataset.faceup = true
+    topCard.style.backgroundImage = `url(./assets/card-fronts/${topCard.id}.svg)`
+    uppile.appendChild(topCard);
 
-    })
-
-
+})
 
 
-
-
-
+//lays out all cards from the shuffled deck array of objects into nested div elements in the document
 const dealNewGame = () =>{
         //add basecards to each pile
-        shuffledDeck = shuffleDeck(createDeck())
+        let shuffledDeck = shuffleDeck(createDeck())
 
         document.querySelectorAll('.pile').forEach(pile => {
             let dealCount = parseInt(pile.id[pile.id.length - 1])
@@ -160,8 +157,10 @@ const dealNewGame = () =>{
 
 
 
+//once all cards in the 'hand' have been clicked through and are ready for a reset, the div 'linked-list' must be reversed
+//to preserve card order
 
-const reverseCardStack = () => {
+const resetCardStack = () => {
     //check to see if there are no more children (i.e. you've reached the new top)
     let newList = '';
     let parentNode = document.getElementById('uppile').children[0]
@@ -188,15 +187,16 @@ const reverseCardStack = () => {
 
 document.getElementById('uppile').addEventListener('click', () => {
     if (document.getElementById('downpile').children.length === 0) {
-        let freshDeck = reverseCardStack()
+        let freshDeck = resetCardStack()
         document.getElementById('downpile').innerHTML = '';
         document.getElementById('downpile').appendChild(freshDeck);
     }
 
 })
 
-
+//initializes the deal
 dealNewGame();
 
+//sets the newgame button to reload the page
 document.getElementById('newgame').addEventListener('click', e => location.reload());
 })

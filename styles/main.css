@@ -60,7 +60,9 @@ header {
 
 h1 {
   font-size: 50px;
-  color: var(--greyDark);
+  background-color: lineargradient(--primary, --primary-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 20px;
   border-radius: 900px;
   font-family: proxima-nova,sans-serif;

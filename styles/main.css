@@ -60,7 +60,8 @@ header {
 
 h1 {
   font-size: 50px;
-  background-color: lineargradient(--primary, --primary-dark);
+  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(48%, rgba(78, 9, 121, 0.891194)), to(#00d4ff));
+  background: linear-gradient(90deg, #020024 0%, rgba(78, 9, 121, 0.891194) 48%, #00d4ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 20px;

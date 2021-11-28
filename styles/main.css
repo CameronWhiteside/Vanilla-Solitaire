@@ -15,7 +15,7 @@ html {
   font-size: 62.5%;
   overflow-y: scroll;
   background: var(--greyLight-1);
-  font-family: craw-modern-urw,serif;
+  font-family: proxima-nova,sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -63,12 +63,17 @@ h1 {
   color: var(--greyDark);
   padding: 20px;
   border-radius: 900px;
+  font-family: proxima-nova,sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .headerbutton {
   background-color: transparent;
   border: none;
-  font-family: craw-modern-urw,serif;
+  font-family: proxima-nova,sans-serif;
+  font-weight: 300;
+  font-style: normal;
   -webkit-box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
           box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
   padding: 10px 20px;

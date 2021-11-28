@@ -22,10 +22,9 @@ html {
     font-size: 62.5%; // 1rem = 10px    100% = 16px
     overflow-y: scroll;
     background: var(--greyLight-1);
-    font-family: craw-modern-urw,serif;
+    font-family: proxima-nova,sans-serif;
     font-weight: 300;
     font-style: normal;
-
     @media screen and (min-width: 900px) {
           font-size: 75%; }
   }
@@ -58,12 +57,17 @@ h1 {
     // -webkit-text-fill-color: transparent;
     padding: 20px;
     border-radius: 900px;
+    font-family: proxima-nova,sans-serif;
+    font-weight: 700;
+    font-style: normal;
   }
 
 .headerbutton{
     background-color: transparent;
     border: none;
-    font-family: craw-modern-urw,serif;
+    font-family: proxima-nova,sans-serif;
+    font-weight: 300;
+    font-style: normal;
     box-shadow: $shadow;
     padding: 10px 20px;
     margin: 5px 20px 1px;

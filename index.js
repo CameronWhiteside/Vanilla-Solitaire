@@ -13,16 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    function handleDragStart(e) {
+ function handleDragStart(e) {
         e.dataTransfer.setData('droppedItemInfo', JSON.stringify(e.target.dataset))
         e.dataTransfer.setData('droppedItemId', e.target.id)
         e.dataTransfer.setData('innerHTML', e.target.innerHTML);
-    }
+}
 
 function handleDrop(e) {
     let dropzone = e.target;
-    console.log(dropzone.id)
-    console.log(e.dataTransfer.getData('droppedItemId'))
     if(!dropzone.classList.contains('cardslot') || (dropzone.children.length > 0) || dropzone.id === e.dataTransfer.getData('droppedItemId')) return;
     e.preventDefault()
 

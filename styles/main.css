@@ -64,7 +64,20 @@ h1 {
   background: linear-gradient(90deg, #020024 0%, rgba(78, 9, 121, 0.891194) 48%, #00d4ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 20px;
+  padding: 20px 20px 0px;
+  border-radius: 900px;
+  font-family: proxima-nova,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+p {
+  font-size: 13px;
+  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(48%, rgba(39, 5, 60, 0.891194)), to(#0064a0));
+  background: linear-gradient(90deg, #020024 0%, rgba(39, 5, 60, 0.891194) 48%, #0064a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0px 20px 20px;
   border-radius: 900px;
   font-family: proxima-nova,sans-serif;
   font-weight: 700;

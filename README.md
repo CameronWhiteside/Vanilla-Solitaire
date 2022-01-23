@@ -1,8 +1,8 @@
 # Vanilla Solitaire
 
-Live Site
+<a href="https://vanilla-solitaire.vercel.app/">Live Site</a>
 
-This was an independent project created to utilize the HTML5 Drag and Drop API. The application was designed with minimal JavaScript and isdesigned to mimic a tabletop game of single-draw solitare. Placement logic has been minimized so that users can explore their own version of the classic card game.
+An independent project created to utilize the HTML5 Drag and Drop API. The application was designed with minimal JavaScript and isdesigned to mimic a tabletop game of single-draw solitare. Placement logic has been minimized so that users can explore their own version of the classic card game.
 
 
 ### Site Preview
